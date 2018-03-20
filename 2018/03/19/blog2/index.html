@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>blog2 | shy的博客</title>
+  <title>es6规范 | shy的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="blog2">
+  <meta name="description" content="es6 es7 es8 typescript 这些都是为了让一些语法逻辑更为简洁 常量12const a = xxxconst obj =&amp;#123;&amp;#125;">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6规范">
 <meta property="og:url" content="http://yoursite.com/2018/03/19/blog2/index.html">
 <meta property="og:site_name" content="shy的博客">
-<meta property="og:updated_time" content="2018-03-19T09:25:22.000Z">
+<meta property="og:description" content="es6 es7 es8 typescript 这些都是为了让一些语法逻辑更为简洁 常量12const a = xxxconst obj =&amp;#123;&amp;#125;">
+<meta property="og:updated_time" content="2018-03-20T07:07:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="blog2">
+<meta name="twitter:title" content="es6规范">
+<meta name="twitter:description" content="es6 es7 es8 typescript 这些都是为了让一些语法逻辑更为简洁 常量12const a = xxxconst obj =&amp;#123;&amp;#125;">
   
     <link rel="alternative" href="/atom.xml" title="shy的博客" type="application/atom+xml">
   
@@ -160,7 +164,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      blog2
+      es6规范
     </h1>
   
 
@@ -173,7 +177,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>es6 es7 es8 typescript 这些都是为了让一些语法逻辑更为简洁</p>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = xxx</span><br><span class="line">const obj =&#123;&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = xxx</span><br></pre></td></tr></table></figure>
+<h3 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h3><p>传统的JavaScript语言，输出模板通常是这样写的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> welcome = <span class="string">'You have logged in as '</span> + first + <span class="string">' '</span> + last + <span class="string">'.'</span></span><br><span class="line"><span class="keyword">const</span> db = <span class="string">'http://'</span> + host + <span class="string">':'</span> + port + <span class="string">'/'</span> + database;</span><br></pre></td></tr></table></figure>
+<p>ES6可以使用反引号和${}简写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> welcome = <span class="string">`You have logged in as <span class="subst">$&#123;first&#125;</span> <span class="subst">$&#123;last&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> db = <span class="string">`http://<span class="subst">$&#123;host&#125;</span>:<span class="subst">$&#123;port&#125;</span>/<span class="subst">$&#123;database&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="解构赋值简写方法"><a href="#解构赋值简写方法" class="headerlink" title="解构赋值简写方法"></a>解构赋值简写方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> observable = <span class="built_in">require</span>(<span class="string">'mobx/observable'</span>);</span><br><span class="line"><span class="keyword">const</span> action = <span class="built_in">require</span>(<span class="string">'mobx/action'</span>);</span><br><span class="line"><span class="keyword">const</span> runInAction = <span class="built_in">require</span>(<span class="string">'mobx/runInAction'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">this</span>.props.store;</span><br><span class="line"><span class="keyword">const</span> form = <span class="keyword">this</span>.props.form;</span><br><span class="line"><span class="keyword">const</span> loading = <span class="keyword">this</span>.props.loading;</span><br><span class="line"><span class="keyword">const</span> errors = <span class="keyword">this</span>.props.errors;</span><br><span class="line"><span class="keyword">const</span> entity = <span class="keyword">this</span>.props.entity;</span><br></pre></td></tr></table></figure>
+<p>简写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; observable, action, runInAction &#125; <span class="keyword">from</span> <span class="string">'mobx'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; store, form, loading, errors, entity &#125; = <span class="keyword">this</span>.props;</span><br></pre></td></tr></table></figure></p>
+<h3 id="扩展运算符简写"><a href="#扩展运算符简写" class="headerlink" title="扩展运算符简写"></a>扩展运算符简写</h3><p>扩展运算符有几种用例让JavaScript代码更加有效使用，可以用来代替某个数组函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// joining arrays</span></span><br><span class="line"><span class="keyword">const</span> odd = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> nums = [<span class="number">2</span> ,<span class="number">4</span> , <span class="number">6</span>].concat(odd);</span><br><span class="line"></span><br><span class="line"><span class="comment">// cloning arrays</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">const</span> arr2 = arr.slice()</span><br></pre></td></tr></table></figure></p>
+<p>简写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> odd = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span> ];</span><br><span class="line"><span class="keyword">const</span> nums = [<span class="number">2</span> ,<span class="number">4</span> , <span class="number">6</span>, ...odd];</span><br><span class="line"><span class="built_in">console</span>.log(nums); <span class="comment">// [ 2, 4, 6, 1, 3, 5 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// cloning arrays</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">const</span> arr2 = [...arr];</span><br></pre></td></tr></table></figure>
+<p>也可以使用扩展运算符解构：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; a, b, ...z &#125; = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>, <span class="attr">d</span>: <span class="number">4</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(z) <span class="comment">// &#123; c: 3, d: 4 &#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="对象的扩展"><a href="#对象的扩展" class="headerlink" title="对象的扩展"></a>对象的扩展</h3><p>Object.assign方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。<br>Object.assign方法的第一个参数是目标对象，后面的参数都是源对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> source1 = &#123; <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> source2 = &#123; <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.assign(target, source1, source2);</span><br><span class="line">target <span class="comment">// &#123;a:1, b:2, c:3&#125;</span></span><br></pre></td></tr></table></figure>
+<p>注意，如果目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> source1 = &#123; <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> source2 = &#123; <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.assign(target, source1, source2);</span><br><span class="line">target <span class="comment">// &#123;a:1, b:2, c:3&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h3><p>Map filter forEach (es5常用)</p>
+<p>find方法  扩展符</p>
+<p>想从数组中查找某个值，则需要循环。在ES6中，find()函数能实现同样效果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pets = [</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">'Dog'</span>, <span class="attr">name</span>: <span class="string">'Max'</span>&#125;,</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">'Cat'</span>, <span class="attr">name</span>: <span class="string">'Karl'</span>&#125;,</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">'Dog'</span>, <span class="attr">name</span>: <span class="string">'Tommy'</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findDog</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt;pets.length; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span>(pets[i].type === <span class="string">'Dog'</span> &amp;&amp; pets[i].name === name) &#123;</span><br><span class="line">      <span class="keyword">return</span> pets[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pet = pets.find(<span class="function"><span class="params">pet</span> =&gt;</span> pet.type ===<span class="string">'Dog'</span> &amp;&amp; pet.name === <span class="string">'Tommy'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(pet); <span class="comment">// &#123; type: 'Dog', name: 'Tommy' &#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="异步操作"><a href="#异步操作" class="headerlink" title="异步操作"></a>异步操作</h3><p>promise用法</p>
+<p>链接   <a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/promise</a></p>
+<p>async await</p>
+<p>链接  <a href="http://es6.ruanyifeng.com/#docs/async" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/async</a></p>
+
       
 
       
@@ -207,6 +239,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -281,8 +324,8 @@
     </a>
   
   
-    <a href="/2018/03/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">angular2</div>
+    <a href="/2018/03/19/blog1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">blog1</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -296,7 +339,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="blog2" data-title="blog2" data-url="http://yoursite.com/2018/03/19/blog2/"></div>
+	<div class="ds-thread" data-thread-key="blog2" data-title="es6规范" data-url="http://yoursite.com/2018/03/19/blog2/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -404,11 +447,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nodejs angualr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
             
             <div class="clearfix"></div>

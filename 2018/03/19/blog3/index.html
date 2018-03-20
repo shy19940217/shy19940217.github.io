@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>webpack成神之路 | shy的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="现在的前端网页功能丰富，特别是SPA（single page web application 单页应用）技术流行后，JavaScript的复杂度增加和需要一大堆依赖包，还需要解决SCSS，Less……新增样式的扩展写法的编译工作。所以现代化的前端已经完全依赖于WebPack的辅助了。 什么是WebPack？WebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript">
+  <meta name="description" content="现在的前端网页功能丰富，特别是SPA（single page web application 单页应用）技术流行后，JavaScript的复杂度增加和需要一大堆依赖包，还需要解决SCSS，Less……新增样式的扩展写法的编译工作。所以现代化的前端已经完全依赖于WebPack的辅助了。">
 <meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack成神之路">
 <meta property="og:url" content="http://yoursite.com/2018/03/19/blog3/index.html">
 <meta property="og:site_name" content="shy的博客">
-<meta property="og:description" content="现在的前端网页功能丰富，特别是SPA（single page web application 单页应用）技术流行后，JavaScript的复杂度增加和需要一大堆依赖包，还需要解决SCSS，Less……新增样式的扩展写法的编译工作。所以现代化的前端已经完全依赖于WebPack的辅助了。 什么是WebPack？WebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript">
-<meta property="og:updated_time" content="2018-03-20T03:10:32.000Z">
+<meta property="og:description" content="现在的前端网页功能丰富，特别是SPA（single page web application 单页应用）技术流行后，JavaScript的复杂度增加和需要一大堆依赖包，还需要解决SCSS，Less……新增样式的扩展写法的编译工作。所以现代化的前端已经完全依赖于WebPack的辅助了。">
+<meta property="og:updated_time" content="2018-03-20T07:04:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack成神之路">
-<meta name="twitter:description" content="现在的前端网页功能丰富，特别是SPA（single page web application 单页应用）技术流行后，JavaScript的复杂度增加和需要一大堆依赖包，还需要解决SCSS，Less……新增样式的扩展写法的编译工作。所以现代化的前端已经完全依赖于WebPack的辅助了。 什么是WebPack？WebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript">
+<meta name="twitter:description" content="现在的前端网页功能丰富，特别是SPA（single page web application 单页应用）技术流行后，JavaScript的复杂度增加和需要一大堆依赖包，还需要解决SCSS，Less……新增样式的扩展写法的编译工作。所以现代化的前端已经完全依赖于WebPack的辅助了。">
   
     <link rel="alternative" href="/atom.xml" title="shy的博客" type="application/atom+xml">
   
@@ -177,7 +177,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>现在的前端网页功能丰富，特别是SPA（single page web application 单页应用）技术流行后，JavaScript的复杂度增加和需要一大堆依赖包，还需要解决SCSS，Less……新增样式的扩展写法的编译工作。所以现代化的前端已经完全依赖于WebPack的辅助了。</p>
+        <p>现在的前端网页功能丰富，特别是SPA（single page web application 单页应用）技术流行后，JavaScript的复杂度增加和需要一大堆依赖包，还需要解决SCSS，Less……新增样式的扩展写法的编译工作。所以现代化的前端已经完全依赖于WebPack的辅助了。<br><a id="more"></a></p>
 <h2 id="什么是WebPack？"><a href="#什么是WebPack？" class="headerlink" title="什么是WebPack？"></a>什么是WebPack？</h2><p>WebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Sass，TypeScript等），并将其转换和打包为合适的格式供浏览器使用。在3.0出现后，Webpack还肩负起了优化项目的责任。</p>
 <h2 id="配置文件入口和出口"><a href="#配置文件入口和出口" class="headerlink" title="配置文件入口和出口"></a>配置文件入口和出口</h2><p>在我所经历的项目里有多页打包也有单页入口打包，无外乎就是入口不一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">module.exports=&#123;</span><br><span class="line">    //入口文件的配置项</span><br><span class="line">    entry:&#123;&#125;,</span><br><span class="line">    //出口文件的配置项</span><br><span class="line">    output:&#123;&#125;,</span><br><span class="line">    //模块：例如解读CSS,图片如何转换，压缩</span><br><span class="line">    module:&#123;&#125;,</span><br><span class="line">    //插件，用于生产模版和各项功能</span><br><span class="line">    plugins:[],</span><br><span class="line">    //配置webpack开发服务功能</span><br><span class="line">    devServer:&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="入口配置"><a href="#入口配置" class="headerlink" title="入口配置"></a>入口配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//入口文件的配置项</span><br><span class="line">entry:&#123;</span><br><span class="line">    //里面的entery是可以随便写的</span><br><span class="line">    entry:&apos;./src/entry.js&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -317,7 +317,7 @@
   
   
     <a href="/2018/03/19/blog2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">blog2</div>
+      <div class="article-nav-title">es6规范</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -439,11 +439,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nodejs angualr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
             
             <div class="clearfix"></div>
