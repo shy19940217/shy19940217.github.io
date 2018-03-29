@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/03/23/blog4/index.html">
 <meta property="og:site_name" content="shy的博客">
 <meta property="og:description" content="cors共享它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。 CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。浏览器将CORS请求分成两类：简单请求（simple request）和非简单请求">
-<meta property="og:updated_time" content="2018-03-26T02:24:00.000Z">
+<meta property="og:updated_time" content="2018-03-29T03:24:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见的跨域解决方案">
 <meta name="twitter:description" content="cors共享它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。 CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。浏览器将CORS请求分成两类：简单请求（simple request）和非简单请求">
@@ -194,8 +194,8 @@
 <h2 id="nginx转发处理"><a href="#nginx转发处理" class="headerlink" title="nginx转发处理"></a>nginx转发处理</h2><p>由于跨域共享在一些浏览器不支持，所以跨域共享并非最佳方案。</p>
 <p>nginx反向代理,但是他可以不用目标服务器配合，不过需要你搭建一个中转nginx服务器，用于转发请求。<br>搭建一个nginx并把相应代码部署在它的下面，由页面请求本域名的一个地址，转由nginx代理处理后返回结果给页面，而且这一切都是同步的。</p>
 <p>关于nginx的一些基本配置和安装请看我后续推出的另一篇博客，下面直接讲解如何配置一个反向代理。</p>
-<p>先找到nginx.conf或者nginx.conf.default<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    location /｛   #所有以/开头的地址，实际上是所有请求</span><br><span class="line">    </span><br><span class="line">    root  html     ＃去请求../html文件夹里的文件,其中..的路径在nginx里面有定义，安装的时候会有默认路径，详见另一篇博客</span><br><span class="line">    </span><br><span class="line">    index  index.html index.htm  ＃首页响应地址</span><br><span class="line">    </span><br><span class="line">    ｝</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>从上面可以看出location是nginx用来路由的入口，所以我们接下来要在location里面完成我们的反向代理。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       <span class="number">8094</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">       location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        location /apis &#123;</span><br><span class="line">            rewrite  ^.+apis/?(.*)$ /$<span class="number">1</span> <span class="keyword">break</span>;</span><br><span class="line">            include  uwsgi_params;</span><br><span class="line">            proxy_pass   http:<span class="comment">//localhost:1894;</span></span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>先找到nginx.conf或者nginx.conf.default<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    location /｛   #所有以/开头的地址，实际上是所有请求</span><br><span class="line">    </span><br><span class="line">    root  html     ＃去请求../html文件夹里的文件,其中..的路径在nginx里面有定义，安装的时候会有默认路径</span><br><span class="line">    </span><br><span class="line">    index  index.html index.htm  ＃首页响应地址</span><br><span class="line">    </span><br><span class="line">    ｝</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从上面可以看出location是nginx用来路由的入口，所以我们接下来要在location里面完成我们的反向代理。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       <span class="number">8094</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">       location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        location /apis &#123;</span><br><span class="line">            rewrite  ^.+apis/?(.*)$ /$<span class="number">1</span> <span class="keyword">break</span>;</span><br><span class="line">            include  uwsgi_params;</span><br><span class="line">            proxy_pass   http:<span class="comment">//localhost:1894;</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>配置说明：配置一个/apis  重写到我们真正的api地址<a href="http://localhost:1894" target="_blank" rel="noopener">http://localhost:1894</a>  形成一个代理的过程。</p>
 <p>这样就没有跨域问题了</p>
 <h2 id="node转发处理"><a href="#node转发处理" class="headerlink" title="node转发处理"></a>node转发处理</h2><h3 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.all(&apos;*&apos;, function(req, res, next) &#123;</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;Content-Type,Content-Length, Authorization, Accept,X-Requested-With&quot;);</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Methods&quot;,&quot;PUT,POST,GET,DELETE,OPTIONS&quot;);</span><br><span class="line">    res.header(&quot;X-Powered-By&quot;,&apos; 3.2.1&apos;)</span><br><span class="line">    if(req.method==&quot;OPTIONS&quot;) res.send(200);/*让options请求快速返回*/</span><br><span class="line">    else  next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -313,6 +313,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/03/29/blog5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          vue常用配置以及用法总结
+        
+      </div>
+    </a>
   
   
     <a href="/2018/03/23/blog1/" id="article-nav-older" class="article-nav-link-wrap">
@@ -434,11 +443,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>
